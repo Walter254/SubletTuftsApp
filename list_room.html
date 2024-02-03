@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<!-- Link to CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+<link rel="stylesheet" href="css/styles.css">
+
+<title>List Your Room</title>
+
+
+<style>
+
+
+.main-top {
+    margin-top: 8rem;
+}
+body {
+    width: 100%;
+    height: 100vh;
+}
+h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 3.5rem;
+    color: var(--second-color);
+}
+.main-container {
+	margin-top: 2rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px 100px;
+}  
+.main-container:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    z-index: -1;
+    filter: blur(30px);
+}  
+.contact-box {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--bg-color);
+}
+
+.right {
+    padding: 25px 40px;
+}
+
+.field{
+    width: 100%;
+    border: 2px solid rgba(0, 0, 0, 0);
+    outline: none;
+    background-color: rgba(230, 230, 230, 0.6);
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    margin-bottom: 22px;
+    transition: .3s;
+}
+.field:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+textarea{
+    min-height: 150px;
+}
+.field:focus{
+    border: 2px solid rgba(30,85,250,0.47);
+    background-color: #fff;
+}
+.date-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    position: block;
+    bottom: 4rem;
+    padding: 30px;
+    border-radius: 0.5rem;
+}
+.input-box {
+    flex: 1 1 7rem;
+    display: flex;
+    flex-direction: column;
+}
+.input-box span {
+    font-weight: 500;
+}
+.input-box input {
+    padding: 7px;
+    outline: none;
+    border: none;
+    background: #fdfdfd;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+</style>
+
+<script>
+
+async function validate(){
+
+    var check = true;
+    
+    email = document.getElementById('email').value;
+    Street = document.getElementById('street').value;
+    city = document.getElementById('city').value;
+    house_number = document.getElementById('house_number').value;
+    zip = document.getElementById('zip').value;
+    price = document.getElementById('price').value;
+    YOUR_API_KEY = "4003d3b20f20431dba86de1e19554c0b";
+
+    const url = `https://api.geoapify.com/v1/geocode/search?housenumber=${encodeURIComponent(house_number)}
+    &street=${encodeURIComponent(Street)}&postcode=${encodeURIComponent(zip)}&city=${encodeURIComponent(city)}&apiKey=${YOUR_API_KEY}`;
+
+    const ACCEPT_LEVEL = 0.95;
+    const DECLINE_LEVEL = 0.2;
+
+    const validationResult = {};
+
+     fetch(url).then(response => response.json()).then(result => {
+
+        console.log(result);
+
+        if (result.features.length === 0) {
+            validationResult.validation = 'NOT_CONFIRMED';
+            console.log(validationResult.validation);
+            alert("WARNING: Verify that the address you've put is valid")
+            alert("Address"+validationResult.validation)
+            check = false;
+        }
+
+        const address = result.features[0].properties;
+        console.log(address);
+
+        if (address.rank.confidence >= ACCEPT_LEVEL) {
+            validationResult.validation = 'CONFIRMED';
+        } else if (address.rank.confidence < DECLINE_LEVEL) {
+            validationResult.validation = 'NOT_CONFIRMED';
+            alert("WARNING: Verify that the address you've put is valid")
+
+        } else {
+            validationResult.validation = 'PARTIALLY_CONFIRMED';
+            alert("WARNING: Verify that the address you've put is valid")
+            check = false;
+        if (address.rank.confidence_street_level >= ACCEPT_LEVEL) {
+            validationResult.validation_details = 'BUILDING_NOT_FOUND';
+            alert("WARNING: Verify that the address you've put is valid")
+        } else if (address.rank.confidence_city_level >= ACCEPT_LEVEL) {
+            validationResult.validation_details = 'HAS STREET DOUBTS';
+            alert("WARNING: Verify that the address you've put is valid")
+        } else {
+            validationResult.validation_details = 'HAS CITY DOUBTS';
+            alert("WARNING: Verify that the address you've put is valid")
+            
+        }
+        }
+
+
+    })
+    .catch(error => console.log('error', error));
+
+    if(email == ""){
+        alert("Please enter your email address")
+        check = false;
+    }
+    else if(Street == ""){
+        alert("Please enter the street name")
+
+        check = false;
+    }
+    else if(city==""){
+        alert("Please enter the name of the city")
+        check = false;
+    }
+    else if(price ==""){
+        alert("Please enter the room's price per month")
+        check = false;
+    }
+    else {
+
+        check = true;
+
+    }
+    return check;
+}
+</script>
+
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+<header>
+	<div class="nav container">
+		<!-- Logo -->
+		<a href="index.html" class="logo"><i class="bx bx-home"></i>Sublet Tufts</a>
+		<input type="checkbox" name="" id="menu">
+		<label for="menu"><i class="bx bx-menu" id="menu-icon"></i></label>
+		<!-- Nav List -->
+		<ul class="navbar">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="about.html">About Us</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="list_room.html">List Room</a></li>
+			<li><a href="find_room.html">Find Room</a></li>
+		</ul>
+
+		<!-- Log In Button -->
+		<a href="#" class="login-btn">Log In</a>
+	</div>
+</header>
+
+<main>
+	<h1 class="main-top">
+        List Your Room
+    </h1>
+    <div class="main-container">
+        <div class="contact-box">
+            <div class="right">
+                <form method="POST"  action="populate_db.php" onsubmit="return validate()"> 
+                    
+
+                    <p class="user_Info"><input class="field" type="text" id="fname" name="Fname" placeholder="First Name" /></p>
+                    <p class="user_Info"><input class="field" type="text" id="lname" name="Lname" placeholder="Last Name" /></p>
+            
+                    <p class="user_Info"><input class="field" type="email"  id='email' name="Email" placeholder="Email*" required/></p>
+            
+                    <p class="room_Info address"><input class="field" type="text" id='house_number' name="House_number" placeholder="House Number*" required /></p>
+                    <p class="room_Info address"> <input class="field" type="text" id='street' name="Street" placeholder="Street*" required/></p>
+                    <p class="room_Info address"><input class="field" type="text" id='city' name="City" placeholder="City*" required /></p>
+                    <p class="room_Info address"><input class="field" type="text" id='zip' name="Zip" placeholder="Zip_code*" required /></p>
+                    
+                    <p class="room_Info"><input class="field" type="text" id='price' name="Price" placeholder="Price/Month*" required /></p>
+                    <p class="num_Bathrooms"><input class="field" type="text" id="bathrooms" name="Bathrooms" placeholder="Number of bathrooms"/></p>
+            
+                    <div class="room_Description">
+                    <input class="field" type="text" id="subject" name="Description" placeholder="Extra information about the room...."/>
+                    </div>
+                    <div class="availability">
+                    <input class="field" type="text" id="Availability" name="availability" placeholder="Summer 2022*" required/>
+                    </div>
+                    <!-- <div class="date-container">
+                        <div class="input-box">
+                            <span>Move-in</span>
+                            <input type="date" name="Date_Start_Test_DatetimeLocal" id="Start_Test_DatetimeLocal">
+                        </div>
+                        <div class="input-box">
+                            <span>Move-out</span>
+                            <input type="date" name="Date_End_Test_DatetimeLocal" id="End_Test_DatetimeLocal">
+                        </div>
+                    </div> -->
+                    <p class="room_Img"><label>Room Image:</label><input type="file" id="room_Image" name="room_photo" required/>
+            
+                    <input class="login-btn" type = "submit" value = "List Room" id="list_button" name="List_button" onclick="return validate()"/>
+                
+            
+            </form>
+            </div>
+        </div>
+    </div>
+	
+
+	
+</main>
+
+<!-- Footer -->
+<section class="footer">
+	<div class="footer-container container">
+		<!-- Logo -->
+		<a href="index.html" class="logo"><i class="bx bx-home"></i>Sublet Tufts</a>
+		<div class="footer-box">
+			<h3>Quick Links</h3>
+			<a href="#">List Room</a>
+			<a href="find_room.php">Find Room</a>
+			<a href="index.html">Home</a>
+		</div>
+		<div class="footer-box">
+			<h3>Location</h3>
+			<a href="find_room.php">Somervile</a>
+			<a href="find_room.php">Medford</a>
+			<a href="find_room.php">On-Campus</a>
+		</div>
+		<div class="footer-box">
+			<h3>Contact</h3>
+			<a href="#">(617) 999 9999</a>
+			<a href="#">help@tsublet.com</a>
+			<div class="social">
+				<a href="#"><i class="bx bxl-facebook"></i></a>
+				<a href="#"><i class="bx bxl-twitter"></i></a>
+				<a href="#"><i class="bx bxl-instagram"></i></a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Copyright -->
+<div class="copyright">
+    <p>&#169; Four Musketeers All Rights Reserved |<a href="privacy.html" style="color: #fff; text-decoration: none;">Privacy and Policy</a> </p>
+</div>
+	
+
+</body>
+
+
+
+</html>

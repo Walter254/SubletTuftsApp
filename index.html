@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Tufts Sublet</title>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <div class="nav container">
+            <!-- Logo -->
+            <a href="index.html" class="logo"><i class="bx bx-home"></i>Sublet Tufts...</a>
+            <input type="checkbox" name="" id="menu">
+            <label for="menu"><i class="bx bx-menu" id="menu-icon"></i></label>
+            <!-- Nav List -->
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="list_room.html">List Room</a></li>
+                <li><a href="find_room.html">Find Room</a></li>
+            </ul>
+
+            <!-- Log In Button -->
+            <a href="#" class="login-btn">Log In</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="home container" id="home">
+        <div class="home-text">
+            <h1>The Best Subletting <br> Experience You Need <br> To Be Happy</h1>
+            <a href="#" class="login-btn">Sign Up</a>
+        </div>
+    </section>
+
+    <!-- pitch -->
+    <section class="pitch container" id="pitch">
+        <!-- Box 1 -->
+        <div class="box">
+            <i class="bx bx-user"></i>
+            <h3>Simple Experience</h3>
+            <p>Our platform provides a simple experience in searching for Off-Campus
+                housing for a semester, a year or a summer.
+            </p>
+        </div>
+
+        <!-- Box 2 -->
+        <div class="box">
+            <i class="bx bx-desktop"></i>
+            <h3>Support</h3>
+            <p>We provide 24/7 support with on call, phone, or email. Our support staff
+                will help you with any concerns you have.
+            </p>
+        </div>
+
+        <!-- Box 3 -->
+        <div class="box">
+            <i class="bx bx-home-alt"></i>
+            <h3>Best Homes</h3>
+            <p>We don't just provide you with a living space, we provide you with a home 
+                away from home.
+            </p>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section class="about container" id="about">
+        <div class="about-img">
+            <img src="img/about.jpg" alt="about us">
+        </div>
+        <div class="about-text">
+            <span>About Us</span>
+            <h2>50 Years of Providing <br> Great Sublets For You!</h2>
+            <p>As alums of Tufts, we understand that the housing experience can be a bit frustrating</p>
+            <p>That is why we simplify the process with an all in one platform for subletting</p>
+            <p>Our track record is proven with 100% satisfaction guaranteed</p>
+            <a href="#" class="login-btn">Learn More</a>
+        </div>
+    </section>
+
+
+    <!-- Rooms -->
+    <section class="rooms container" id="rooms">
+        <div class="heading">
+            <span>Recent Listings</span>
+            <h2>Our Featured Spaces</h2>
+            <p> Discover Our Most Recent Listings</p> <br> We guarantee you'll find the right one for you</p>
+        </div>
+        <div class="rooms-container container">
+            <!-- Box 1 -->
+            <div class="box" onclick="navigateToRoom(1)">
+                <img src="img/picture1.jpg" alt="picture1">
+                <h3>$1,000</h3>
+                <div class="content">
+                    <div class="tex">
+                        <h3>37 Adams</h3>
+                        <p>Full Year</p>
+                    </div>
+                    <div class="icon">
+                        <i class="bx bx-bed"><span>5</span></i>
+                        <i class="bx bx-bath"><span>2</span></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box 2 -->
+            <div class="box" onclick="navigateToRoom(2)">
+                <img src="img/picture2.jpg" alt="picture2">
+                <h3>$2,000</h3>
+                <div class="content">
+                    <div class="tex">
+                        <h3>20 Winthrop</h3>
+                        <p>Summer</p>
+                    </div>
+                    <div class="icon">
+                        <i class="bx bx-bed"><span>5</span></i>
+                        <i class="bx bx-bath"><span>2</span></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box 3 -->
+            <div class="box" onclick="navigateToRoom(3)">
+                <img src="img/picture3.jpg" alt="picture3">
+                <h3>$2,000</h3>
+                <div class="content">
+                    <div class="tex">
+                        <h3>81 Jane</h3>
+                        <p>Fall</p>
+                    </div>
+                    <div class="icon">
+                        <i class="bx bx-bed"><span>5</span></i>
+                        <i class="bx bx-bath"><span>2</span></i>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Support -->
+    <section class="support container">
+        <h2>Have a Question in Mind? <br> Let Us Help You</h2>
+        <form action="">
+            <input type="email" name="" id="email-box" placeholder="   john.doe@tufts.edu" required>
+            <input type="submit" value="Send" class="login-btn">
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <section class="footer">
+	<div class="footer-container container">
+		<!-- Logo -->
+		<a href="index.html" class="logo"><i class="bx bx-home"></i>Sublet Tufts</a>
+		<div class="footer-box">
+			<h3>Quick Links</h3>
+			<a href="list_room.html">List Room</a>
+			<a href="#">Find Room</a>
+			<a href="index.html">Home</a>
+		</div>
+		<div class="footer-box">
+			<h3>Location</h3>
+			<a href="find_room.php">Somerville</a>
+			<a href="find_room.php">Medford</a>
+			<a href="find_room.php">On-Campus</a>
+		</div>
+		<div class="footer-box">
+			<h3>Contact</h3>
+			<a href="#">(617) 999 9999</a>
+			<a href="#">help@tsublet.com</a>
+			<div class="social">
+				<a href="#"><i class="bx bxl-facebook"></i></a>
+				<a href="#"><i class="bx bxl-twitter"></i></a>
+				<a href="#"><i class="bx bxl-instagram"></i></a>
+			</div>
+		</div>
+	</div>
+</section>
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <p>&#169; Four Musketeers All Rights Reserved |<a href="privacy.html" style="color: #3a5e52; text-decoration: none;">Privacy and Policy</a> </p>
+    </div>
+	
+	<script>
+        function navigateToRoom(roomId) {
+            window.location.href = "room.html?roomId=" + roomId;
+        }
+    </script>
+    
+</body>
+</html>
