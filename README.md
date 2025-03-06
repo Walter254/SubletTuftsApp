@@ -13,6 +13,10 @@ Tufts Sublet is a web application designed to help students at Tufts University 
 - **Privacy Policy**: A comprehensive privacy policy to inform users about data collection and usage.
 - **Room Listing Form**: A form for users to submit their own room listings.
 
+## Loom Demo
+
+Check out our Loom demo video to see how the application works: [Watch the Demo](https://www.loom.com/share/b1086af644434a60876d3935fab8ac26?sid=68b443c3-b0c0-433c-92a0-f09d223b5d44)
+
 ## Technologies Used
 
 - **Frontend**: HTML, CSS, JavaScript
@@ -36,7 +40,7 @@ Tufts Sublet is a web application designed to help students at Tufts University 
    - You can use XAMPP, MAMP, or any other local server setup to run the PHP files.
 
 4. Access the application:
-   - Open your web browser and navigate to `http://localhost/tufts-sublet/index.html`.
+   - Open your web browser and navigate to `http://localhost/index.html`.
 
 ## Usage
 
@@ -58,4 +62,4 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 
 ## Contact
 
-For any questions or feedback, please reach out to us at help@tsublet.com.
+For any questions or feedback, please reach out to us at walterwagude02@gmail.com
